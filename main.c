@@ -13,7 +13,7 @@ to find
 Rules:
 1. Don't change the comments without permission
 2. During the comments even when have permission don't swear or tell any misinformation others about something or someone
-3. Don't change the typedef struct, it's very important
+3. Don't change the typedef struct, it's very important, if you don't have premission
 4. Don't get this wrong:
 return 1 equals to memory error or human failure
 return 2 is the others error you can or will fill in
@@ -25,8 +25,11 @@ return 2 is the others error you can or will fill in
 10. No AI or little is allowed, as I don't want any "AI-slop" or people paying tokens for this small projects
 11. It's somewhat forced, but compile this in Linux, or UNIX like system (POSIX, MacOS), but if you're on a Windows
 device than just use WSL(safer but slow and room of errors) or dual-boot(more rooms for errors but dual-booting
-is fast in some instances and for long-term use, yeah use it)
-12. Done!*/
+is fast in some instances and for long-term use or heavy-use, yeah use it)
+12. On the Github repo, go to master, not main so that you found the right code to download, compile or change
+13. If you don't want a way of email, you can call me by +84 396 656 656 (Yes, I'm Vietnamese) , but email is more preferred
+14. Don't delete the main.c (aka. main code), even though I have git backup, but still don't dare to delete it
+15. Done!*/
 
 #include <stdio.h> // Print text, and other purposes
 #include <unistd.h> //For time purposes and for UNIX syscall
@@ -60,15 +63,16 @@ int main(){
     //If epochs bigger than 1 day(possible in real life, not this time) or smaller than 0 seconds(impossible)
     if (epoch.epochs < 0 || epoch.epochs > 86400){
         //Trace the bug from int not memory address anymore =(
+        printf("\a");
         printf("Error on %d\n", epoch.epochs);
         return 1; //Return human failure
     }
     else{
         while (1){
                 //Calculate time
-                epoch.hour = epoch.epochs / 3600;
-                epoch.min = (epoch.epochs % 3600) / 60;
-                epoch.sec = epoch.epochs % 60;
+                epoch.hour = epoch.epochs / 3600; //Calculate hours
+                epoch.min = (epoch.epochs % 3600) / 60; //Calculate minutes
+                epoch.sec = epoch.epochs % 60; //Calculate seconds
                 //Time
                 buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d]", epoch.hour, epoch.min,epoch.sec);
                 write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
@@ -80,6 +84,7 @@ int main(){
                 //Check if epochs is more or equal to 86400
                 if (epoch.epochs >= 86400){
                     //Set epoch to 0
+                    printf("\a");
                     epoch.epochs = 0;
                     buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d]", epoch.hour, epoch.min,epoch.sec);
                     write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
