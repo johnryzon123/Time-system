@@ -12,7 +12,7 @@ to find
 Rules:
 1. Don't change the comments without permission
 2. During the comments even when have permission don't swear or tell any misinformation others about something or someone
-3. Don't change the typedef struct, it's very important
+3. Don't change the typedef struct, it's very important, if you don't have premission
 4. Don't get this wrong:
 return 1 equals to memory error or human failure
 return 2 is the others error you can or will fill in
@@ -24,6 +24,8 @@ return 2 is the others error you can or will fill in
 10. No AI or little is allowed, as I don't want any "AI-slop" or people paying tokens for this small projects
 11. It's somewhat forced, but compile this in Linux, or UNIX like system (POSIX, MacOS), but if you're on a Windows
 device than just use WSL(safer but slow and room of errors) or dual-boot(more rooms for errors but dual-booting
-is fast in some instances and for long-term use, yeah use it)
-12. On this github repo, go to master, not main so that you found the right code to download, compile or change
-13. Done!
+is fast in some instances and for long-term use or heavy-use, yeah use it)
+12. On the Github repo, go to master, not main so that you found the right code to download, compile or change
+13. If you don't want a way of email, you can call me by +84 396 656 656 (Yes, I'm Vietnamese) , but email is more preferred
+14. Don't delete the main.c (aka. main code), even though I have git backup, but still don't dare to delete it
+15. Done!
