@@ -32,7 +32,7 @@ is fast in some instances and for long-term use or heavy-use, yeah use it)
 15. Done!*/
 
 #include <stdio.h> // Print text, and other purposes
-#include <unistd.h> //For time purposes and for UNIX syscall
+#include <unistd.h> //For time purposes and for UNIX system call(aka. syscall)
 //All the variables
 typedef struct Counter{
     int milsec; //Milliseconds
@@ -65,11 +65,12 @@ int main(){
     if (epoch.epochs < 0 || epoch.epochs > 86400){
         //Trace the bug from int not memory address anymore =(
         printf("\a");
-        printf("Error on %f\n", epoch.epochs);
+        char error[] = "Error Detected!\n";
+        write(1, error, sizeof(error));
         return 1; //Return human failure
     }
     else{
-        //Calculate master_ms by turning seconds => millieconds
+        //Calculate master_ms by turning seconds => milliseconds
         long long master_ms = (long long)epoch.epochs * 1000LL;
         while (1){
                 //Calculate time
@@ -80,10 +81,10 @@ int main(){
                 //Assign the standard calculated seconds value back to the struct member to keep it accurate
                 epoch.epochs = (float)master_ms / 1000LL;
                 //Time
-                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec, epoch.milsec);
+                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec, epoch.milsec); //To get the buffer size of buffer
                 write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 fflush(stdout);
-                //Wait 1000 mircosecond
+                //Wait for 1000 mircosecond
                 usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
                 //Add a milliseconds
                 master_ms++;
