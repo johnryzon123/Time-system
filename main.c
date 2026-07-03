@@ -35,17 +35,18 @@ is fast in some instances and for long-term use or heavy-use, yeah use it)
 #include <unistd.h> //For time purposes and for UNIX syscall
 //All the variables
 typedef struct Counter{
+    int milsec; //Milliseconds
     int sec; //Seconds
     int min; //Minutes
     int hour;//Hours
-    int epochs;//Epochs(based on UNIX epochs time)
+    float epochs;//Epochs(based on UNIX epochs time)
 }Counter_start;
 //Runs in main(), as it's in C
 int main(){
     //Some variables
     Counter_start epoch;
-    char buffer[100];
-    char buffer_read[100];
+    char buffer[500];
+    char buffer_read[500];
     int buffer_size;
     //Asking the user
     printf("What is the epochs(0-86400): ");
@@ -59,34 +60,45 @@ int main(){
     //The null-terminate input so you may know, or ask Google for that
     buffer_read[reading] = '\0';
     //Extract and turn it into a substring we want
-    sscanf(buffer_read, "%d", &epoch.epochs);
+    sscanf(buffer_read, "%f", &epoch.epochs);
     //If epochs bigger than 1 day(possible in real life, not this time) or smaller than 0 seconds(impossible)
     if (epoch.epochs < 0 || epoch.epochs > 86400){
         //Trace the bug from int not memory address anymore =(
         printf("\a");
-        printf("Error on %d\n", epoch.epochs);
+        printf("Error on %f\n", epoch.epochs);
         return 1; //Return human failure
     }
     else{
+        //Calculate master_ms by turning seconds => millieconds
+        long long master_ms = (long long)epoch.epochs * 1000LL;
         while (1){
                 //Calculate time
-                epoch.hour = epoch.epochs / 3600; //Calculate hours
-                epoch.min = (epoch.epochs % 3600) / 60; //Calculate minutes
-                epoch.sec = epoch.epochs % 60; //Calculate seconds
+                epoch.hour = master_ms / 3600000LL; //Calculate hours
+                epoch.min = (master_ms % 3600000LL) / 60000LL; //Calculate minutes
+                epoch.sec = (master_ms % 60000LL) / 1000LL; //Calculate seconds
+                epoch.milsec = master_ms % 1000LL; //Calculate milliseconds
+                //Assign the standard calculated seconds value back to the struct member to keep it accurate
+                epoch.epochs = (float)master_ms / 1000LL;
                 //Time
-                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d]", epoch.hour, epoch.min,epoch.sec);
+                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec, epoch.milsec);
                 write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 fflush(stdout);
-                //Wait 1 second
-                sleep(1); //Low level way of writing time, UNIX or UNIX-like system only!
-                //Add 1 more in epoch
-                epoch.epochs++;
-                //Check if epochs is more or equal to 86400
-                if (epoch.epochs >= 86400){
+                //Wait 1000 mircosecond
+                usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
+                //Add a milliseconds
+                master_ms++;
+                //Check if epochs is more or equal to a day
+                if (epoch.epochs >= 86400000LL){
                     //Set epoch to 0
                     printf("\a");
-                    epoch.epochs = 0;
-                    buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d]", epoch.hour, epoch.min,epoch.sec);
+                    //Set everything back to 0 =)
+                    epoch.epochs = 0.0f;
+                    master_ms = 0LL;
+                    epoch.hour = 0;
+                    epoch.min = 0;
+                    epoch.sec = 0;
+                    epoch.milsec = 0;
+                    buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec,epoch.milsec);
                     write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 }
         }
