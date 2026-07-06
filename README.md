@@ -9,6 +9,15 @@ And now this is some rules you should follow when writing code outside the licen
 Lastly email me if you spot bugs or if you want a safety mechanism , but as there's lot's of spam on the inbox, it may take a few days
 to find
 
+Also, I'm currently only making small updates, but big ones may come soon as what's better slow but big or fast but small, your choose it
+
+Also, if you want an acceptable update or upgrade like GUI, TUI , etc... , let me know =)
+
+And in the community chat on github, please don't cause cyberbullying, crimes, politics, flexing, or just downright
+
+And I may need some testers please =)
+
+adult content, as I'm not on the mood to do so
 Rules:
 1. Don't change the comments without permission
 2. During the comments even when have permission don't swear or tell any misinformation others about something or someone
