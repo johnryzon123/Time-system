@@ -10,6 +10,15 @@ And now this is some rules you should follow when writing code outside the licen
 Lastly email me if you spot bugs or if you want a safety mechanism , but as there's lot's of spam on the inbox, it may take a few days
 to find
 
+Also, I'm currently only making small updates, but big ones may come soon as what's better slow but big or fast but small, your choose it
+
+Also, if you want an acceptable update or upgrade like GUI, TUI , etc... , let me know =)
+
+And in the community chat on github, please don't cause cyberbullying, crimes, politics, flexing, or just downright
+
+And I may need some testers please =)
+
+adult content, as I'm not on the mood to do so
 Rules:
 1. Don't change the comments without permission
 2. During the comments even when have permission don't swear or tell any misinformation others about something or someone
@@ -33,6 +42,7 @@ is fast in some instances and for long-term use or heavy-use, yeah use it)
 
 #include <stdio.h> // Print text, and other purposes
 #include <unistd.h> //For time purposes and for UNIX system call(aka. syscall)
+#define LIMIT 32767 // The limit for arrays, based on the 16 bit int signed max, and if you're on very weak computer, change this now
 //All the variables
 typedef struct Counter{
     int milsec; //Milliseconds
@@ -45,8 +55,8 @@ typedef struct Counter{
 int main(){
     //Some variables
     Counter_start epoch;
-    char buffer[500];
-    char buffer_read[500];
+    char buffer[LIMIT];
+    char buffer_read[LIMIT];
     int buffer_size;
     //Asking the user
     printf("What is the epochs(0-86400): ");
@@ -80,7 +90,7 @@ int main(){
                 epoch.milsec = master_ms % 1000LL; //Calculate milliseconds
                 //Assign the standard calculated seconds value back to the struct member to keep it accurate
                 epoch.epochs = (float)master_ms / 1000LL;
-                //Time
+                //Time to count
                 buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec, epoch.milsec); //To get the buffer size of buffer
                 write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 fflush(stdout);
@@ -99,7 +109,7 @@ int main(){
                     epoch.min = 0;
                     epoch.sec = 0;
                     epoch.milsec = 0;
-                    buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec,epoch.milsec);
+                    buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec,epoch.milsec); //To get the buffer size of buffer
                     write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 }
         }
