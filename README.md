@@ -1,4 +1,4 @@
-Welcome to my project now today is 03/07/2026 and in 9:03 UTC, I wrote this so future readers can read my projects
+Welcome to my project now today is 07/07/2026 and in 4:40 UTC, I wrote this so future readers can read my projects
 
 Now I'm currently in grade 5, and I'm writing this to calm myself down as I like writing code
 
@@ -13,11 +13,14 @@ Also, I'm currently only making small updates, but big ones may come soon as wha
 
 Also, if you want an acceptable update or upgrade like GUI, TUI , etc... , let me know =)
 
-And in the community chat on github, please don't cause cyberbullying, crimes, politics, flexing, or just downright
-
 And I may need some testers please =)
 
+And in the community chat on github, please don't cause cyberbullying, crimes, politics, flexing, or just downright
+
 adult content, as I'm not on the mood to do so
+
+By the way, the dates is incorrect as I may not change it often, so check using Github or git =)
+
 Rules:
 1. Don't change the comments without permission
 2. During the comments even when have permission don't swear or tell any misinformation others about something or someone
