@@ -1,5 +1,5 @@
 /*
-Welcome to my project now today is 03/07/2026 and in 9:03 UTC, I wrote this so future readers can read my projects
+Welcome to my project now today is 07/07/2026 and in 4:40 UTC, I wrote this so future readers can read my projects
 
 Now I'm currently in grade 5, and I'm writing this to calm myself down as I like writing code
 
@@ -51,6 +51,22 @@ typedef struct Counter{
     int hour;//Hours
     float epochs;//Epochs(based on UNIX epochs time)
 }Counter_start;
+//Function to do base10(decimal) => base16(hexadecimal)
+char* dectohex(int dec, char *hex[]){
+    if (dec == 0){//Check if the decimal is 0
+        return "0"; //Return 0
+    }
+    char hexmap[] = "0123456789ABCDEF";//The hexmap is all the hex charaters
+    //Loop
+    for (int i = 0; i < 8; i++){
+        //The bit masking way to turn base10 to 16
+        int shift = 28 - (i * 4);
+        int map_key = (dec >> shift) & 0xF;
+        hex[2+i] = hexmap[map_key];
+    }
+    //Add a null terminator at the end
+    hex[10] = '\0';
+}
 //Runs in main(), as it's in C
 int main(){
     //Some variables
@@ -58,6 +74,7 @@ int main(){
     char buffer[LIMIT];
     char buffer_read[LIMIT];
     int buffer_size;
+    char buffer_hex[LIMIT];
     //Asking the user
     printf("What is the epochs(0-86400): ");
     fflush(stdout);
@@ -82,6 +99,7 @@ int main(){
     else{
         //Calculate master_ms by turning seconds => milliseconds
         long long master_ms = (long long)epoch.epochs * 1000LL;
+        int a = epoch.epochs;
         while (1){
                 //Calculate time
                 epoch.hour = master_ms / 3600000LL; //Calculate hours
@@ -91,7 +109,8 @@ int main(){
                 //Assign the standard calculated seconds value back to the struct member to keep it accurate
                 epoch.epochs = (float)master_ms / 1000LL;
                 //Time to count
-                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec, epoch.milsec); //To get the buffer size of buffer
+                dectohex(a, buffer_hex);
+                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
                 write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 fflush(stdout);
                 //Wait for 1000 mircosecond
@@ -109,7 +128,8 @@ int main(){
                     epoch.min = 0;
                     epoch.sec = 0;
                     epoch.milsec = 0;
-                    buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d]", epoch.hour, epoch.min,epoch.sec,epoch.milsec); //To get the buffer size of buffer
+                    dectohex(a, buffer_hex);
+                    buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%X"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec,epoch.milsec, buffer_hex); //To get the buffer size of buffer
                     write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
                 }
         }
