@@ -1,4 +1,4 @@
-Welcome to my project now today is `07/07/2026` and in `10:36 PM`, I wrote this so future readers can read my projects
+Welcome to my project now today is `08/07/2026` and in `10:44 PM`, I wrote this so future readers can read my projects
 
 Now I'm currently in **grade 5**, and I'm writing this to calm myself down as I like writing code
 
@@ -11,8 +11,6 @@ Lastly email me or write in github issues if you spot bugs or if you want a safe
 Also, I'm currently only making small updates, but small ones may come bigger and big ones may break
 
 Also, if you want an acceptable update or upgrade like GUI, TUI , etc... , let me know =)
-
-adult content, as I'm not on the mood
 
 ## Rules:
 And I may need some testers please =)
