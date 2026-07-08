@@ -79,7 +79,6 @@ int main(){
     //If epochs bigger than 1 day(possible in real life, not this time) or smaller than 0 seconds(impossible)
     if (epoch.epochs < 0 || epoch.epochs > 86400){
         //Trace the bug from int not memory address anymore =(
-        printf("\a");
         char error[] = "Error Detected!\n";
         write(1, error, sizeof(error));
         return 1; //Return human failure
@@ -107,8 +106,6 @@ int main(){
                 master_ms++;
                 //Check if epochs is more or equal to a day
                 if (epoch.epochs >= 86400000LL){
-                    //Set epoch to 0
-                    printf("\a");
                     //Set everything back to 0 =)
                     epoch.epochs = 0.0f;
                     master_ms = 0LL;
