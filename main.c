@@ -1,5 +1,5 @@
 /*
-Welcome to my project now today is 07/07/2026 and in 4:40 UTC, I wrote this so future readers can read my projects
+Welcome to my project now today is 08/07/2026 and in 12:54 UTC, I wrote this so future readers can read my projects
 
 Now I'm currently in grade 5, and I'm writing this to calm myself down as I like writing code
 
@@ -45,7 +45,8 @@ is fast in some instances and for long-term use or heavy-use, yeah use it)
 
 #include <stdio.h> // Print text, and other purposes
 #include <unistd.h> //For time purposes and for UNIX system call(aka. syscall)
-#define LIMIT 32767 // The limit for arrays, based on the 16 bit int signed max, and if you're on very weak computer, change this now
+#include "util.h" // For the hexadecimal function
+#define LIMIT 524287 // The limit for arrays, based on the 20 bit int signed max, and if you're on very weak computer, urgently change this now please
 //All the variables
 typedef struct Counter{
     int milsec; //Milliseconds
@@ -54,22 +55,6 @@ typedef struct Counter{
     int hour;//Hours
     float epochs;//Epochs(based on UNIX epochs time)
 }Counter_start;
-//Function to do base10(decimal) => base16(hexadecimal)
-char* dectohex(int dec, char *hex[]){
-    if (dec == 0){//Check if the decimal is 0
-        return "0"; //Return 0
-    }
-    char hexmap[] = "0123456789ABCDEF";//The hexmap is all the hex charaters
-    //Loop
-    for (int i = 0; i < 8; i++){
-        //The bit masking way to turn base10 to 16
-        int shift = 28 - (i * 4);
-        int map_key = (dec >> shift) & 0xF;
-        hex[2+i] = hexmap[map_key];
-    }
-    //Add a null terminator at the end
-    hex[10] = '\0';
-}
 //Runs in main(), as it's in C
 int main(){
     //Some variables
