@@ -1,8 +1,10 @@
 #include "util.h"
 //Function to do base10(decimal) => base16(hexadecimal)
-char* dectohex(int dec, char *hex[]){
-    if (dec == 0){//Check if the decimal is 0
-        return "0"; //Return 0
+void dectohex(int dec, char hex[]){
+    if (dec == 0){
+        hex[0] = '0';
+        hex[1] = '\0';
+        return;
     }
     char hexmap[] = "0123456789ABCDEF";//The hexmap is all the hex charaters
     //Loop

@@ -104,6 +104,7 @@ int main(){
                 usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
                 //Add a milliseconds
                 master_ms++;
+                a = a + 0.001;
                 //Check if epochs is more or equal to a day
                 if (epoch.epochs >= 86400000LL){
                     //Set everything back to 0 =)
