@@ -16,4 +16,5 @@ void dectohex(int dec, char hex[]){
     }
     //Add a null terminator at the end
     hex[10] = '\0';
+    return;
 }
