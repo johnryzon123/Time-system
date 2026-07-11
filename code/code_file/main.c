@@ -45,9 +45,12 @@ is fast in some instances and for long-term use or heavy-use, yeah use it)
 
 #include <stdio.h> // Print text, and other purposes
 #include <unistd.h> //For time purposes and for UNIX system call(aka. syscall)
+#include <stdbool.h>
 #include "util.h" // For the hexadecimal function
+
 #define LIMIT 127 // The limit for arrays, based on the 8 bit int unsigned max, and if you're on very weak computer, urgently change this now please
-//All the variables
+#define SMALL_LIMIT 40 //Smaller limit for small chars, good for this projects
+//struct variables for counting
 typedef struct Counter{
     int milsec; //Milliseconds
     int sec; //Seconds
@@ -55,21 +58,29 @@ typedef struct Counter{
     int hour;//Hours
     float epochs;//Epochs(based on UNIX epochs time)
 }Counter_start;
+//struct for low level writing
+typedef struct Char_var {
+    char fail_hf[SMALL_LIMIT]; //Human failure
+    char error_te[SMALL_LIMIT]; //Techical or external error
+}Char_var;
 //Runs in main(), as it's in C
 int main(){
     //Some variables
-    Counter_start epoch;
-    char buffer[LIMIT];
-    char buffer_read[LIMIT];
-    int buffer_size;
-    char buffer_hex[LIMIT];
+    Counter_start epoch; //To start the struct to count
+    Char_var writing = {"Human failure detected"/*For human failure*/, "External Error Detected"}; //Chars for read/write for unistd (plans from my dreams)
+    char buffer[LIMIT]; //Print stuff
+    char buffer_read[LIMIT]; //Read epochs.epochs
+    int buffer_size; //Size of buffer to calculate
+    char buffer_hex[LIMIT]; //Print hexadecimal
     //Asking the user
     printf("What is the epochs(0-86400): ");
     fflush(stdout);
     //Low level reading Linux
     int reading = read(0, buffer_read, sizeof(buffer_read)-1);
-    //Prepare for if it can't read any thing
+    //Prepare for if it can't read anything
     if (reading <= 0){
+        //To let the user knows it's an external error
+        write(1, writing.error_te, sizeof(writing.error_te));
         return 2; //Return external errors
     }
     //The null-terminate input so you may know, or ask Google for that
@@ -77,39 +88,38 @@ int main(){
     //Extract and turn it into a substring we want
     sscanf(buffer_read, "%f", &epoch.epochs);
     //If epochs bigger than 1 day(possible in real life, not this time) or smaller than 0 seconds(impossible)
-    if (epoch.epochs < 0 || epoch.epochs > 86400){
+    if (epoch.epochs < 0.0f || epoch.epochs > 86400.0f){
         //Trace the bug from int not memory address anymore =(
-        char error[] = "Error Detected!\n";
-        write(1, error, sizeof(error));
+        write(1, writing.fail_hf, sizeof(writing.fail_hf));
         return 1; //Return human failure
     }
     else{
         //Calculate master_ms by turning seconds => milliseconds
         long long master_ms = (long long)epoch.epochs * 1000LL;
-        while (1){
-                //Calculate time
-                epoch.hour = (master_ms / 3600000LL) % 24; //Calculate hours
-                epoch.min = (master_ms % 3600000LL) / 60000LL; //Calculate minutes
-                epoch.sec = (master_ms % 60000LL) / 1000LL; //Calculate seconds
-                epoch.milsec = master_ms % 1000LL; //Calculate milliseconds
-                //Assign the standard calculated seconds value back to the struct member to keep it accurate
-                epoch.epochs = (float)master_ms / 1000.0f;
-                //Calculate
-                int num = master_ms / 1000LL;
-                //Time to count
-                dectohex(num, buffer_hex);
-                buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
-                write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
-                fflush(stdout);
-                //Wait for 1000 mircosecond
-                usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
-                //Add a milliseconds
-                master_ms++;
-                //Check if epochs is more or equal to a day
-                if (epoch.epochs >= 86400000LL){
-                    //Set everything back to 0 =)
-                    master_ms = 0LL;
-                }
+        while (true){
+            //Calculate time
+            //epoch.hour = (master_ms / 3600000LL) % 24; //Calculate hours
+            epoch.min = (master_ms % 3600000LL) / 60000LL; //Calculate minutes
+            epoch.sec = (master_ms % 60000LL) / 1000LL; //Calculate seconds
+            epoch.milsec = master_ms % 1000LL; //Calculate milliseconds
+            //Assign the standard calculated seconds value back to the struct member to keep it accurate
+            //epoch.epochs = (float)master_ms / 1000.0f;
+            //Calculate
+            int num = master_ms / 1000LL;
+            //Time to count
+            dectohex(num, buffer_hex);
+            buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
+            write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
+            fflush(stdout);
+            //Wait for 1000 mircosecond
+            usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
+            //Add a milliseconds
+            master_ms++;
+            //Check if epochs is more or equal to a day
+            if (epoch.epochs >= 864000.0f){
+                //Set everything back to 0 =)
+                master_ms = 0LL;
+            }
         }
     }
 }
