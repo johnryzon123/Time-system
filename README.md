@@ -10,6 +10,8 @@ Lastly email me or write in github issues if you spot bugs or if you want a safe
 
 Also, I'm currently only making small updates, but small ones may come bigger and big ones may break
 
+By the way, the dates is incorrect as I may not change it often, so check using Github or git =)
+
 Also, if you want an acceptable update or upgrade like GUI, TUI , etc... , let me know =)
 
 ## Rules:
@@ -18,8 +20,6 @@ And I may need some testers please =)
 And in the community chat on github, please don't cause cyberbullying, crimes, politics, flexing, or just downright
 
 adult content, as I'm not on the mood to do so
-
-By the way, the dates is incorrect as I may not change it often, so check using Github or git =)
 
 Rules:
 1. Don't change the comments without permission
