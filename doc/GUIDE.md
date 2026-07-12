@@ -1,4 +1,4 @@
-**Step-by-Step guide**
+ ## **Step-by-Step guide**
 
 Welcome to my 'Time-system' project!
 
