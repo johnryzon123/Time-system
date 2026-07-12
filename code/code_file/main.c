@@ -65,16 +65,16 @@ typedef struct Char_var {
 int main(){
     //Some variables
     Counter_start epoch; //To start the struct to count
-    Char_var writing = {"Human failure detected"/*For human failure*/, "External Error Detected"}; //Chars for read/write for unistd (plans from my dreams)
+    Char_var writing = {"Human failure detected"/*For human failure*/, "External Error Detected"/*Mostly means a technical error, but just errors that is not human failure, and you can imagine it*/}; //Chars for read/write for unistd (plans from my dreams)
     char buffer[LIMIT]; //Print stuff
     char buffer_read[LIMIT]; //Read epochs.epochs
     int buffer_size; //Size of buffer to calculate
     char buffer_hex[LIMIT]; //Print hexadecimal
     //Asking the user
     printf("What is the epochs(0-86400): ");
-    fflush(stdout);
+    fflush(stdout); //Without this the epochs will disapper
     //Low level reading Linux
-    int reading = read(0, buffer_read, sizeof(buffer_read)-1);
+    int reading = read(0, buffer_read, sizeof(buffer_read)-1); //Read the input
     //Prepare for if it can't read anything
     if (reading <= 0){
         //To let the user knows it's an external error
@@ -85,10 +85,10 @@ int main(){
     buffer_read[reading] = '\0';
     //Extract and turn it into a substring we want
     sscanf(buffer_read, "%f", &epoch.epochs);
-    //If epochs bigger than 1 day(possible in real life, not this time) or smaller than 0 seconds(impossible)
+    //If epochs bigger than 1 day(possible in real life, but impossible in this time) or smaller than 0 seconds(impossible)
     if (epoch.epochs < 0.0f || epoch.epochs > 86400.0f){
         //Trace the bug from int not memory address anymore =(
-        write(1, writing.fail_hf, sizeof(writing.fail_hf));
+        write(1, writing.fail_hf, sizeof(writing.fail_hf)); //Write stuff
         return 1; //Return human failure
     }
     else{
@@ -108,7 +108,6 @@ int main(){
             dectohex(num, buffer_hex);
             buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
             write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
-            fflush(stdout);
             //Wait for 1000 mircosecond
             usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
             //Add a milliseconds

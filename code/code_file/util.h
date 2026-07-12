@@ -3,4 +3,4 @@
 // Functions
 void dectohex(int dec, char hex[]);
 
-#endif // It ends
+#endif // It ends here
