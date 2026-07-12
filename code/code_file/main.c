@@ -93,17 +93,17 @@ int main(){
     }
     else{
         //Calculate master_ms by turning seconds => milliseconds
-        long long master_ms = (long long)epoch.epochs * 1000LL;
+        int master_ms = (int)epoch.epochs * 1000;
         while (true){
             //Calculate time
-            //epoch.hour = (master_ms / 3600000LL) % 24; //Calculate hours
-            epoch.min = (master_ms % 3600000LL) / 60000LL; //Calculate minutes
-            epoch.sec = (master_ms % 60000LL) / 1000LL; //Calculate seconds
-            epoch.milsec = master_ms % 1000LL; //Calculate milliseconds
+            epoch.hour = (master_ms / 3600000) % 24; //Calculate hours
+            epoch.min = (master_ms % 3600000) / 60000; //Calculate minutes
+            epoch.sec = (master_ms % 60000) / 1000; //Calculate seconds
+            epoch.milsec = master_ms % 1000; //Calculate milliseconds
             //Assign the standard calculated seconds value back to the struct member to keep it accurate
             //epoch.epochs = (float)master_ms / 1000.0f;
             //Calculate
-            int num = master_ms / 1000LL;
+            int num = master_ms / 1000;
             //Time to count
             dectohex(num, buffer_hex);
             buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
@@ -115,7 +115,7 @@ int main(){
             //Check if epochs is more or equal to a day
             if (epoch.epochs >= 864000.0f){
                 //Set everything back to 0 =)
-                master_ms = 0LL;
+                master_ms = 0;
             }
         }
     }
