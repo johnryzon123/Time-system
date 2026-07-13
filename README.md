@@ -33,7 +33,7 @@ return 2 is the others error you can or will fill in
 7. Don't change the code to other languages , if you have no permission
 8. Changing code also needs comments, so others can understand and learn
 9. Flexing by changing code or other means in this repo is a big no-no
-10. No AI or vibecoding is allowed, as I don't want any "AI-slop" or people paying tokens for this small projects
+10. AI or vibecoding is allowed, but reviews need to be taken before merging
 11. It's somewhat forced, but compile this in Linux, or UNIX like system (POSIX, MacOS), but if you're on a Windows
 device then just use WSL(safer but slow and room of errors) or dual-boot(more rooms for errors but dual-booting
 is fast in some instances and for long-term use or heavy-use, yeah use it)
