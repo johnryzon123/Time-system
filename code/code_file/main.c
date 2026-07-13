@@ -1,7 +1,6 @@
 //Welcome to my projects!
 #include <stdio.h> // Print text, and other purposes
 #include <unistd.h> //For time purposes and for UNIX system call(aka. syscall)
-#include <string.h> //To make a loop (idk why my thoughts tell me that)
 #include "util.h" // For the hexadecimal function
 
 #define LIMIT 127 // The limit for arrays, based on the 8 bit int unsigned max
@@ -20,20 +19,20 @@ typedef struct Char_var {
     /*While Bigger char limits like the normal 8 bit one but I make 40 so that it's less memory  hog*/
     char fail_hf[SMALL_LIMIT]; //Human failure
     char error_te[SMALL_LIMIT]; //Techical or external error
-    char epochs_start[SMALL_LIMIT]; //To start to ask people
+    char epochs_start[LIMIT]; //To start to ask people
 }Char_var;
 //Runs in main(), as it's in C
 int main(){
     //Some variables
     Counter_start epoch; //To start the struct to count
     //To get the writing
-    Char_var writing = {"Human failure detected!", "External Error Detected!", "What is the epochs(0-86400): "};
+    Char_var writing = {"Human failure detected!", "External Error Detected!", "What is the epochs(0-86400):"};
     char buffer[LIMIT]; //Print stuff
     char buffer_read[LIMIT]; //Read epochs.epochs
     int buffer_size; //Size of buffer to calculate
     char buffer_hex[LIMIT]; //Print hexadecimal
     //Asking the user
-    write(1, writing.epochs_start, strlen(writing.epochs_start));
+    printf("What is the epochs(0-86400):");
     fflush(stdout); //Without this the epochs will disappear
     //Low level reading Linux
     int reading = read(0, buffer_read, sizeof(buffer_read)-1); //Read the input

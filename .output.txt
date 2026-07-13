@@ -1,0 +1,192 @@
+Command finished with exit code 0.
+Command output:
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     15:03                .idea                                                                
+d-----         13-Jul-26     13:04                cmake-build-debug                                                    
+-a----         11-Jul-26     14:07            179 CMakeLists.txt                                                       
+-a----         13-Jul-26     16:45           4097 main.c                                                               
+-a----         12-Jul-26     15:44            581 util.c                                                               
+-a----         12-Jul-26     15:44            156 util.h                                                               
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\.idea
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         11-Jul-26     14:05            238 .gitignore                                                           
+-a----         11-Jul-26     14:07             97 code_file.iml                                                        
+-a----         11-Jul-26     14:05          13426 editor.xml                                                           
+-a----         11-Jul-26     14:05            255 misc.xml                                                             
+-a----         11-Jul-26     14:05            277 modules.xml                                                          
+-a----         11-Jul-26     14:05            191 vcs.xml                                                              
+-a----         11-Jul-26     15:03           8597 workspace.xml                                                        
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     14:05                .cmake                                                               
+d-----         13-Jul-26     16:45                CMakeFiles                                                           
+d-----         11-Jul-26     14:05                Testing                                                              
+-a----         11-Jul-26     14:05            130 .gitignore                                                           
+-a----         11-Jul-26     14:05          29269 build.ninja                                                          
+-a----         11-Jul-26     15:04          15440 CMakeCache.txt                                                       
+-a----         11-Jul-26     15:04           2214 cmake_install.cmake                                                  
+-a----         13-Jul-26     13:04         134351 code_file.exe                                                        
+-a----         11-Jul-26     14:05           1257 compile_commands.json                                                
+-a----         11-Jul-26     15:04           6927 Makefile                                                             
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\.cmake
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     14:05                api                                                                  
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\.cmake\api
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     15:04                v1                                                                   
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\.cmake\api\v1
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     14:05                query                                                                
+d-----         11-Jul-26     15:04                reply                                                                
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\.cmake\api\v1\query
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         11-Jul-26     14:05              0 cache-v2                                                             
+-a----         11-Jul-26     14:05              0 cmakeFiles-v1                                                        
+-a----         11-Jul-26     14:05              0 codemodel-v2                                                         
+-a----         11-Jul-26     14:05              0 toolchains-v1                                                        
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\.cmake\api\v1\reply
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         11-Jul-26     15:04          24563 cache-v2-0d139f6647c3efe6f019.json                                   
+-a----         11-Jul-26     15:04          19976 cmakeFiles-v1-d82bbd567da864206547.json                              
+-a----         11-Jul-26     15:04           1091 codemodel-v2-52ae1e8bd624413d96c3.json                               
+-a----         11-Jul-26     15:04            232 directory-.-Debug-f6f22219c74102c3da70.json                          
+-a----         11-Jul-26     15:04           2051 index-2026-07-11T08-04-40-0883.json                                  
+-a----         11-Jul-26     15:04           2059 target-code_file-Debug-0dd5b3109aae6174515d.json                     
+-a----         11-Jul-26     15:04           1791 toolchains-v1-f8b7ea00140ff44d3cb0.json                              
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\CMakeFiles
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     15:04                4.2.2                                                                
+d-----         11-Jul-26     15:04                CMakeScratch                                                         
+d-----         13-Jul-26     16:45                code_file.dir                                                        
+d-----         11-Jul-26     15:04                pkgRedirects                                                         
+d-----         13-Jul-26     16:45                Progress                                                             
+-a----         11-Jul-26     15:04            731 clion-Debug-log.txt                                                  
+-a----         11-Jul-26     15:04            185 clion-environment.txt                                                
+-a----         11-Jul-26     15:04             86 cmake.check_cache                                                    
+-a----         11-Jul-26     15:04         165492 CMakeConfigureLog.yaml                                               
+-a----         11-Jul-26     15:04            726 CMakeDirectoryInformation.cmake                                      
+-a----         11-Jul-26     15:04            160 InstallScripts.json                                                  
+-a----         11-Jul-26     15:04          12789 Makefile.cmake                                                       
+-a----         11-Jul-26     15:04           4485 Makefile2                                                            
+-a----         11-Jul-26     15:04              3 progress.marks                                                       
+-a----         11-Jul-26     15:04            314 TargetDirectories.txt                                                
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\CMakeFiles\4.2.2
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     15:04                CompilerIdC                                                          
+-a----         11-Jul-26     15:04           3909 CMakeCCompiler.cmake                                                 
+-a----         11-Jul-26     15:04          43097 CMakeDetermineCompilerABI_C.bin                                      
+-a----         11-Jul-26     15:04            279 CMakeRCCompiler.cmake                                                
+-a----         11-Jul-26     15:04            395 CMakeSystem.cmake                                                    
+
+
+    Directory: 
+    C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\CMakeFiles\4.2.2\CompilerIdC
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11-Jul-26     15:04                tmp                                                                  
+-a----         11-Jul-26     15:04          43144 a.exe                                                                
+-a----         11-Jul-26     15:04          29602 CMakeCCompilerId.c                                                   
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\CMakeFiles\code_file.dir
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         11-Jul-26     15:04           7215 build.make                                                           
+-a----         11-Jul-26     15:04            441 cmake_clean.cmake                                                    
+-a----         13-Jul-26     16:45           2466 compiler_depend.internal                                             
+-a----         13-Jul-26     16:45           4798 compiler_depend.make                                                 
+-a----         11-Jul-26     15:04            118 compiler_depend.ts                                                   
+-a----         11-Jul-26     15:04             95 depend.make                                                          
+-a----         11-Jul-26     15:04            917 DependInfo.cmake                                                     
+-a----         11-Jul-26     15:04            314 flags.make                                                           
+-a----         11-Jul-26     15:04             66 includes_C.rsp                                                       
+-a----         11-Jul-26     15:04            556 link.txt                                                             
+-a----         11-Jul-26     15:04            100 linkLibs.rsp                                                         
+-a----         13-Jul-26     16:45           6786 main.c.obj                                                           
+-a----         13-Jul-26     16:45           2233 main.c.obj.d                                                         
+-a----         13-Jul-26     16:45           9694 objects.a                                                            
+-a----         11-Jul-26     15:04             73 objects1.rsp                                                         
+-a----         11-Jul-26     15:04             68 progress.make                                                        
+-a----         12-Jul-26     15:44           2693 util.c.obj                                                           
+-a----         12-Jul-26     15:44            178 util.c.obj.d                                                         
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\CMakeFiles\Progress
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         13-Jul-26     16:45              5 1                                                                    
+-a----         13-Jul-26     16:45              5 3                                                                    
+-a----         13-Jul-26     16:45              3 count.txt                                                            
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\Testing
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         13-Jul-26     13:08                Temporary                                                            
+
+
+    Directory: C:\Users\Admin\Documents\GitHub\Time-system\code\code_file\cmake-build-debug\Testing\Temporary
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         13-Jul-26     13:08            160 LastTest.log
