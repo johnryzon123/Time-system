@@ -43,36 +43,40 @@ Done!
 
 #include <stdio.h> // Print text, and other purposes
 #include <unistd.h> //For time purposes and for UNIX system call(aka. syscall)
-#include <stdbool.h> //To make a loop (idk why my thoughts tell me that)
+#include <string.h> //To make a loop (idk why my thoughts tell me that)
 #include "util.h" // For the hexadecimal function
 
-#define LIMIT 127 // The limit for arrays, based on the 8 bit int unsigned max, and if you're on very weak computer, urgently change this now please
+#define LIMIT 127 // The limit for arrays, based on the 8 bit int unsigned max
 #define SMALL_LIMIT 40 //Smaller limit for small chars, good for this projects
 //struct variables for counting
 typedef struct Counter{
+    /*The code is always in 32 bit int signed*/
     int milsec; //Milliseconds
     int sec; //Seconds
     int min; //Minutes
     int hour;//Hours
     float epochs;//Epochs(based on UNIX epochs time)
 }Counter_start;
-//struct for low level writing
+//struct for low level writing for write()
 typedef struct Char_var {
+    /*While Bigger char limits like the normal 8 bit one but I make 40 so that it's less memory  hog*/
     char fail_hf[SMALL_LIMIT]; //Human failure
     char error_te[SMALL_LIMIT]; //Techical or external error
+    char epochs_start[SMALL_LIMIT]; //To start to ask people
 }Char_var;
 //Runs in main(), as it's in C
 int main(){
     //Some variables
     Counter_start epoch; //To start the struct to count
-    Char_var writing = {"Human failure detected"/*For human failure*/, "External Error Detected"/*Mostly means a technical error, but just errors that is not human failure, and you can imagine it*/}; //Chars for read/write for unistd (plans from my dreams)
+    //To get the writing
+    Char_var writing = {"Human failure detected!", "External Error Detected!", "What is the epochs(0-86400): "};
     char buffer[LIMIT]; //Print stuff
     char buffer_read[LIMIT]; //Read epochs.epochs
     int buffer_size; //Size of buffer to calculate
     char buffer_hex[LIMIT]; //Print hexadecimal
     //Asking the user
-    printf("What is the epochs(0-86400): ");
-    fflush(stdout); //Without this the epochs will disapper
+    write(1, writing.epochs_start, strlen(writing.epochs_start));
+    fflush(stdout); //Without this the epochs will disappear
     //Low level reading Linux
     int reading = read(0, buffer_read, sizeof(buffer_read)-1); //Read the input
     //Prepare for if it can't read anything
@@ -94,20 +98,20 @@ int main(){
     else{
         //Calculate master_ms by turning seconds => milliseconds
         int master_ms = (int)epoch.epochs * 1000;
-        while (true){
+        while (1){
             //Calculate time
             epoch.hour = (master_ms / 3600000) % 24; //Calculate hours
             epoch.min = (master_ms % 3600000) / 60000; //Calculate minutes
             epoch.sec = (master_ms % 60000) / 1000; //Calculate seconds
             epoch.milsec = master_ms % 1000; //Calculate milliseconds
             //Assign the standard calculated seconds value back to the struct member to keep it accurate
-            //epoch.epochs = (float)master_ms / 1000.0f;
+            epoch.epochs = (float)master_ms / 1000.0f;
             //Calculate
             int num = master_ms / 1000;
             //Time to count
             dectohex(num, buffer_hex);
-            buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s"/*The hexadecimal prints in the left of this block*/, epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
-            write(1, buffer, buffer_size); //Low level way of writing in terminal, UNIX or UNIX-like system only!
+            buffer_size = snprintf(buffer, sizeof(buffer), "\r [%02d:%02d:%02d:%03d], 0x%s", epoch.hour, epoch.min,epoch.sec, epoch.milsec, buffer_hex); //To get the buffer size of buffer
+            write(1, buffer, buffer_size); //Low-level way of writing in terminal, UNIX or UNIX-like system only!
             //Wait for 1000 mircosecond
             usleep(1000); //Low level way of writing time, UNIX or UNIX-like system only!
             //Add a milliseconds
